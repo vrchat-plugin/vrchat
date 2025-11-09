@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Mirrored from vrcplugin.com/ by HTTrack Website Copier/3.x [XR&CO'2014], Wed, 08 Oct 2025 19:31:07 GMT -->
+
+<!-- Mirrored from vrchateroticrp.com/home/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Nov 2025 00:39:44 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VRChat Plugin - Averenth Plugin</title>
+    
+    <!-- Favicon & Site Icons -->
+    <link rel="icon" type="image/png" sizes="32x32" href="images/my-new-logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="images/my-new-logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="images/my-new-logo.png">
+    <link rel="manifest" href="manifest.html">
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="VRChat Plugin Studio - Averenth Plugin">
+    <meta name="keywords" content="VRChat, plugin, VR, virtual reality">
+    <meta name="author" content="VRChat Plugin Studio">
+    <meta property="og:title" content="VRChat Plugin Studio">
+    <meta property="og:description" content="VRChat Averenth Plugin">
+    <meta property="og:image" content="images/my-new-logo.png">
+    <meta property="og:url" content="https://yourdomain.com/">
+    <meta name="twitter:card" content="summary_large_image">
+    
+    <script src="https://cdn.tailwindcss.com/"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&amp;display=swap');
+        
+        * {
+            font-family: 'Inter', sans-serif;
+        }
+        
+        .hero-gradient {
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 25%, #16213e 50%, #0f3460 100%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-gradient::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 80%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%);
+            animation: gradientShift 8s ease-in-out infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        
+        .floating {
+            animation: floating 6s ease-in-out infinite;
+        }
+        
+        .floating-delayed {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: -2s;
+        }
+        
+        .floating-delayed-2 {
+            animation: floating 6s ease-in-out infinite;
+            animation-delay: -4s;
+        }
+        
+        @keyframes floating {
+            0%, 100% { 
+                transform: translateY(0px) rotate(0deg);
+            }
+            33% { 
+                transform: translateY(-20px) rotate(1deg);
+            }
+            66% { 
+                transform: translateY(-10px) rotate(-1deg);
+            }
+        }
+        
+        .card-3d {
+            transform-style: preserve-3d;
+            transition: all 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .card-3d:hover {
+            transform: rotateX(5deg) rotateY(5deg) translateZ(20px);
+            box-shadow: 
+                0 25px 50px rgba(0, 0, 0, 0.3),
+                0 0 0 1px rgba(255, 255, 255, 0.1),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+        }
+        
+        .glow-effect {
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .glow-effect::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(from 0deg, transparent, rgba(120, 119, 198, 0.4), transparent);
+            animation: rotate 4s linear infinite;
+            z-index: -1;
+        }
+        
+        .glow-effect::after {
+            content: '';
+            position: absolute;
+            inset: 2px;
+            background: inherit;
+            border-radius: inherit;
+            z-index: -1;
+        }
+        
+        @keyframes rotate {
+            100% { transform: rotate(360deg); }
+        }
+        
+        .text-glow {
+            text-shadow: 0 0 20px rgba(120, 119, 198, 0.5);
+        }
+        
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(120, 119, 198, 0.4);
+                transform: scale(1);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(120, 119, 198, 0.8);
+                transform: scale(1.05);
+            }
+        }
+        
+        .nav-link {
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -5px;
+            left: 50%;
+            background: linear-gradient(90deg, #7877c6, #ff77c6);
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+            left: 0;
+        }
+        
+        .slide-in-left {
+            animation: slideInLeft 1s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .slide-in-right {
+            animation: slideInRight 1s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .slide-in-up {
+            animation: slideInUp 1s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInRight {
+            from { opacity: 0; transform: translateX(100px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        @keyframes slideInUp {
+            from { opacity: 0; transform: translateY(100px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .morphing-bg {
+            background: linear-gradient(-45deg, #0f0f23, #1a1a2e, #16213e, #0f3460);
+            background-size: 400% 400%;
+            animation: gradientMorph 15s ease infinite;
+        }
+        
+        @keyframes gradientMorph {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .vr-icon {
+            background: linear-gradient(135deg, #7877c6, #ff77c6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: iconPulse 2s ease-in-out infinite;
+        }
+        
+        @keyframes iconPulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+        
+        .feature-card {
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .feature-card:hover {
+            background: rgba(255, 255, 255, 0.1);
+            border-color: rgba(120, 119, 198, 0.5);
+            transform: translateY(-10px) scale(1.02);
+        }
+        
+        .code-block {
+            background: linear-gradient(135deg, rgba(15, 15, 35, 0.9), rgba(26, 26, 46, 0.9));
+            border: 1px solid rgba(120, 119, 198, 0.3);
+            backdrop-filter: blur(10px);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #7877c6;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #7877c6; }
+        }
+
+        /* Loader Styles */
+        #loader {
+            position: fixed;
+            inset: 0;
+            background: #0f0f23;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        #loader.hidden {
+            opacity: 0;
+            pointer-events: none;
+        }
+        
+        .spinner {
+            width: 48px;
+            height: 48px;
+            border: 6px solid #7877c6;
+            border-top-color: transparent;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* YENİ: Kart için parlama animasyonu */
+        @keyframes spin-slow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .animate-spin-slow {
+            animation: spin-slow 10s linear infinite;
+        }
+
+        /* Ripple Effect */
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.4);
+            transform: scale(0);
+            animation: ripple-animation 0.6s linear;
+            pointer-events: none;
+        }
+
+        @keyframes ripple-animation {
+            to {
+                transform: scale(4);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile Menu Styles */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+        
+        .mobile-menu.open {
+            transform: translateX(0);
+        }
+
+        /* Plugin Card Image Styles */
+        .plugin-image {
+            height: 200px;
+            object-fit: cover;
+            transition: all 0.4s ease;
+        }
+        
+        .feature-card:hover .plugin-image {
+            transform: scale(1.05);
+            filter: brightness(1.1);
+        }
+
+        /* Gallery Image Styles */
+        .gallery-image {
+            height: 500px;
+            object-fit: cover;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .gallery-card:hover .gallery-image {
+            transform: scale(1.05);
+            filter: brightness(1.1) contrast(1.1);
+        }
+
+        /* Mobile Optimizations */
+        @media (max-width: 768px) {
+            .hero-gradient::before,
+            .glow-effect::before {
+                display: none;
+            }
+            .floating {
+                animation: none;
+            }
+            .text-5xl { font-size: 2.5rem; }
+            .text-7xl { font-size: 3rem; }
+            .plugin-image { height: 150px; }
+            .gallery-image { height: 300px; }
+        }
+    
+        /* Mobil optimizasyon: ağır animasyonları kapat */
+        @media (max-width: 768px) {
+            .animate-spin,
+            .animate-spin-slow,
+            .floating,
+            .floating-delayed,
+            .floating-delayed-2 {
+                animation: none !important;
+            }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white overflow-x-hidden">
+    <!-- Loader -->
+    <div id="loader">
+        <div class="spinner"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800/50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center space-x-3">
+                    <div class="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center glow-effect">
+                        <img loading="lazy" src="images/my-new-logo.png" 
+                             alt="VRChat Logo" 
+                             class="w-8 h-8 object-contain"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzIiIGhlaWdodD0iMzIiIHZpZXdCb3g9IjAgMCAzMiAzMiIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxNiIgY3k9IjE2IiByPSIxNCIgZmlsbD0iIzY4NzZjNiIvPjx0ZXh0IHg9IjE2IiB5PSIxOCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjEyIiBmaWxsPSJ3aGl0ZSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii40ZW0iPlZSPC90ZXh0Pjwvc3ZnPg=='; this.alt='VR Logo';">
+                    </div>
+                    <span class="text-xl font-bold text-glow">VRChat Plugin</span>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="nav-link hover:text-purple-400">Home</a>
+                    <a href="#plugins" class="nav-link hover:text-purple-400">Plugin Perks</a>
+                    <a href="#community" class="nav-link hover:text-purple-400">Community</a>
+                    <a href="#download" class="nav-link hover:text-purple-400">Download</a>
+                </div>
+                
+                <!-- Desktop Buttons -->
+                <div class="hidden md:flex space-x-4">
+                   
+                    
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-btn" class="md:hidden text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="mobile-menu md:hidden bg-gray-900/95 backdrop-blur-md border-t border-gray-800">
+            <div class="px-4 py-4 space-y-4">
+                <a href="#home" class="block py-2 px-4 nav-link hover:text-purple-400">Ana Sayfa</a>
+                <a href="#plugins" class="block py-2 px-4 nav-link hover:text-purple-400">Pluginler</a>
+                <a href="#gallery" class="block py-2 px-4 nav-link hover:text-purple-400">Görseller</a>
+                <a href="#community" class="block py-2 px-4 nav-link hover:text-purple-400">Topluluk</a>
+                <a href="#download" class="block py-2 px-4 nav-link hover:text-purple-400">İndir</a>
+                <div class="pt-4 space-y-2">
+                    <button class="w-full px-4 py-2 text-purple-400 border border-purple-400/50 rounded-lg hover:bg-purple-400/10 transition-all">
+                        login
+                    </button>
+                    <button class="w-full px-4 py-2 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all pulse-glow">
+                        Plugin Create
+                    </button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-gradient min-h-screen flex items-center relative">
+        <!-- Floating VR Elements -->
+        <div class="absolute inset-0 overflow-hidden pointer-events-none">
+            <div class="floating absolute top-20 left-10 text-6xl opacity-20">🥽</div>
+            <div class="floating-delayed absolute top-40 right-20 text-4xl opacity-30">🎮</div>
+            <div class="floating-delayed-2 absolute bottom-40 left-20 text-5xl opacity-25">🌐</div>
+            <div class="floating absolute bottom-20 right-10 text-3xl opacity-35">⚡</div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div class="slide-in-left">
+                    <h1 class="text-5xl lg:text-7xl font-black mb-6 leading-tight">
+                        <span class="text-glow">VRChat</span>
+                        <br>
+                        <span class="bg-gradient-to-r from-purple-400 via-pink-400 to-blue-400 bg-clip-text text-transparent">
+                            Plugin
+                        </span>
+                        <br>
+                        
+                    </h1>
+                    <p class="text-lg lg:text-xl text-gray-300 mb-8 leading-relaxed">
+                        Try powerful add-ons that will take your VRChat experience to the next level.
+                    </p>
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <!-- HERO DOWNLOAD BUTTON - GÜNCELLENDİ -->
+                        <a href="https://www.mediafire.com/file/j01ke7whut4puy0/Game+Studio+Setup+1.0.0.rar/file" onclick="" 
+                           class="px-8 py-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl text-lg font-semibold hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105 pulse-glow">
+                            🚀 VRCPlugin Download
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="slide-in-right relative">
+                    <div class="relative group overflow-hidden rounded-3xl card-3d h-64 lg:h-80 bg-gradient-to-br from-purple-900/20 to-pink-900/20 border border-white/10">
+                        <!-- Orbiting Elements -->
+                        <div class="absolute inset-0 animate-spin" style="animation-duration: 20s;">
+                            <div class="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-4">
+                                <div class="w-4 h-4 bg-purple-500 rounded-full pulse-glow"></div>
+                            </div>
+                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 translate-y-4">
+                                <div class="w-4 h-4 bg-pink-500 rounded-full pulse-glow"></div>
+                            </div>
+                            <div class="absolute left-0 top-1/2 transform -translate-y-1/2 -translate-x-4">
+                                <div class="w-4 h-4 bg-blue-500 rounded-full pulse-glow"></div>
+                            </div>
+                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 translate-x-4">
+                                <div class="w-4 h-4 bg-green-500 rounded-full pulse-glow"></div>
+                            </div>
+                        </div>
+
+                        <!-- İç kısım -->
+                        <div class="relative z-10">
+                            <img loading="lazy" src="../shared.akamai.steamstatic.com/store_item_assets/steam/apps/438100/capsule_616x353877c877c.jpg?t=1753401422" 
+                                 alt="VRChat Official Screenshot" 
+                                 class="w-full h-48 lg:h-64 object-cover rounded-2xl mb-4 glow-effect transform transition duration-500 group-hover:scale-110"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjE2IiBoZWlnaHQ9IjM1MyIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlZSQ2hhdCBJbcO8YWdlPC90ZXh0Pjwvc3ZnPg=='; this.alt='VRChat image failed to load';">
+                            <div class="text-center">
+                                <h3 class="text-lg lg:text-xl font-bold text-glow mb-2 transition-all duration-500 transform group-hover:-translate-y-1">
+                                    VRChat Plugin
+                                </h3>
+                                <p class="text-gray-300 text-sm opacity-80 transition-opacity duration-500 group-hover:opacity-100">
+                                    Enhance the official VRChat experience
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESİMLİ PLUGİNLER BÖLÜMÜ -->
+    <section id="plugins" class="py-20 morphing-bg relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <h2 class="text-5xl font-bold mb-4 text-glow">Popular Plugins
+</h2>
+                <p class="text-xl text-gray-300 typing-animation">The best plugins to transform your VRChat experience</p>
+            </div>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Avatar Enhancer Plugin -->
+                <div class="card-3d feature-card rounded-2xl p-6 overflow-hidden group">
+                    <!-- Plugin Header with Image -->
+                    <div class="relative mb-4">
+                        <img loading="lazy" src="../cdn.vrcmods.com/uploads/items/item/6706/imgs/3e5c57cab4cd4c6cbef066990387670e.jpg" 
+                             alt="Avatar Enhancer Plugin" 
+                             class="plugin-image w-full rounded-xl glow-effect"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPkF2YXRhciBFbmhhbmNlciBVc2VyPC90ZXh0Pjwvc3ZnPg=='; this.alt='Avatar Enhancer image failed to load';">
+                        
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <!-- Plugin Icon -->
+                        <div class="absolute top-3 right-3 w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center glow-effect opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-bold vr-icon">🎨</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Plugin Content -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-glow group-hover:text-purple-400 transition-colors duration-300">
+                            Avatar Enhancer
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Special animations, glow effects and advanced features for your avatars
+                            Add interactions. Fully customizable system.
+                        </p>
+                        
+                        
+                        </a>
+                        
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>⭐ 4.9 (2.3K)</span>
+                            <span>📥 15K+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- World Builder Plugin -->
+                <div class="card-3d feature-card rounded-2xl p-6 overflow-hidden group">
+                    <!-- Plugin Header with Image -->
+                    <div class="relative mb-4">
+                        <img loading="lazy" src="../cdn.vrcmods.com/uploads/items/item/2309/imgs/c131dedd2c164d898175eff2ea1ead6d.jpg" 
+                             alt="World Builder Plugin" 
+                             class="plugin-image w-full rounded-xl glow-effect"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPldvcmxkIEJ1aWxkZXI8L3RleHQ+PC9zdmc+'; this.alt='World Builder image failed to load';">
+                        
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <!-- Plugin Icon -->
+                        <div class="absolute top-3 right-3 w-10 h-10 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg flex items-center justify-center glow-effect opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-bold vr-icon">🌍</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Plugin Content -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-glow group-hover:text-blue-400 transition-colors duration-300">
+                            World Builder
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Interactive environments with real-time world editor and 
+                            Create dynamic structures. Including portal system.
+                        </p>
+                        
+                        
+                        </a>
+                        
+                        <!-- Stats -->
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>⭐ 4.8 (1.8K)</span>
+                            <span>📥 12K+</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Performance Optimizer Plugin -->
+                <div class="card-3d feature-card rounded-2xl p-6 overflow-hidden group">
+                    <!-- Plugin Header with Image -->
+                    <div class="relative mb-4">
+                        <img loading="lazy" src="../cdn.vrcmods.com/uploads/items/item/5805/imgs/ae55409dcb8c4b03864f2fa0f500706e.png" 
+                             alt="Performance Optimizer Plugin" 
+                             class="plugin-image w-full rounded-xl glow-effect"
+                             onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMzAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjIyIi8+PHRleHQgeD0iNTAlIiB5PSI1MCUiIGZvbnQtZmFtaWx5PSJBcmlhbCIgZm9udC1zaXplPSIxNCIgZmlsbD0iIzk5OSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZHk9Ii4zZW0iPlBlcmZvcm1hbmNlPC90ZXh0Pjwvc3ZnPg=='; this.alt='Performance Optimizer image failed to load';">
+                        
+                        <!-- Gradient Overlay -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                        
+                        <!-- Plugin Icon -->
+                        <div class="absolute top-3 right-3 w-10 h-10 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center glow-effect opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                            <span class="text-white text-sm font-bold vr-icon">⚡</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Plugin Content -->
+                    <div class="space-y-4">
+                        <h3 class="text-xl font-bold text-glow group-hover:text-green-400 transition-colors duration-300">
+                            Performance Optimizer
+                        </h3>
+                        <p class="text-gray-300 text-sm leading-relaxed">
+                            Automatic LOD system, texture optimization and
+                            Advanced FPS boosting tools. Smooth VR experience.
+                        </p>
+                        
+                        
+                        
+                        <!-- Stats -->
+                        <div class="flex justify-between items-center text-xs text-gray-400 mb-4">
+                            <span>⭐ 4.9 (3.1K)</span>
+                            <span>📥 28K+</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Community Stats -->
+    <section id="community" class="py-20 morphing-bg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 slide-in-up">
+                <h2 class="text-4xl font-bold mb-4 text-glow">Growing Community</h2>
+                <p class="text-xl text-gray-300">Trusted by thousands of developers</p>
+            </div>
+            
+            <div class="grid md:grid-cols-4 gap-8 text-center">
+                <div class="card-3d feature-card rounded-2xl p-8">
+                    <div class="text-4xl font-bold text-purple-400 mb-2 vr-icon">15K+</div>
+                    <p class="text-gray-300">Activity User</p>
+                </div>
+                <div class="card-3d feature-card rounded-2xl p-8">
+                    <div class="text-4xl font-bold text-pink-400 mb-2 vr-icon">50K+</div>
+                    <p class="text-gray-300">Developer</p>
+                </div>
+                <div class="card-3d feature-card rounded-2xl p-8">
+                    <div class="text-4xl font-bold text-blue-400 mb-2 vr-icon">2M+</div>
+                    <p class="text-gray-300">Downloaded</p>
+                </div>
+                <div class="card-3d feature-card rounded-2xl p-8">
+                    <div class="text-4xl font-bold text-green-400 mb-2 vr-icon">24/7</div>
+                    <p class="text-gray-300">Support</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Download Section -->
+    <section id="download" class="py-20 bg-gray-900 relative">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10"></div>
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="slide-in-up">
+                <h2 class="text-5xl font-bold mb-6 text-glow">Start Plugin Download</h2>
+                <p class="text-xl text-gray-300 mb-12">
+                    Download Averenth VRChat Plugin for free and make your mark in the VR world
+                </p>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-12">
+                    <div class="card-3d feature-card rounded-2xl p-8">
+                        <div class="text-5xl mb-4 vr-icon">💻</div>
+                        <h3 class="text-2xl font-bold mb-2 text-glow">Desktop Studio</h3>
+                        <p class="text-gray-300 mb-4">Windows</p>
+                        <p class="text-sm text-gray-400 mb-6">Full-featured development environment</p>
+                        <!-- DOWNLOAD BUTTON GÜNCELLENDİ -->
+                        <a href="https://www.mediafire.com/file/j01ke7whut4puy0/Game+Studio+Setup+1.0.0.rar/file" onclick="" 
+                           class="block w-full py-3 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all transform hover:scale-105">
+                            🚀 VRCPlugin Download
+                        </a>
+                    </div>
+                    
+                    <div class="card-3d feature-card rounded-2xl p-8">
+                        <div class="text-5xl mb-4 vr-icon">🌐</div>
+                        <h3 class="text-2xl font-bold mb-2 text-glow">Web Editor</h3>
+                        <p class="text-gray-300 mb-4">Browser-based</p>
+                        <p class="text-sm text-gray-400 mb-6">For rapid prototyping</p>
+                        <!-- DOWNLOAD BUTTON GÜNCELLENDİ -->
+                        <a href="https://www.mediafire.com/file/j01ke7whut4puy0/Game+Studio+Setup+1.0.0.rar/file" onclick=""
+                           class="block w-full py-3 bg-gradient-to-r from-blue-500 to-teal-500 rounded-lg hover:from-blue-600 hover:to-teal-600 transition-all transform hover:scale-105">
+                            🚀 VRCPlugin Download
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="feature-card rounded-2xl p-8 glow-effect">
+                    <h3 class="text-2xl font-bold mb-6 text-glow">System Requirements</h3>
+                    <div class="grid md:grid-cols-2 gap-8 text-left">
+                        <div>
+                            <h4 class="font-semibold mb-3 text-green-400">✅ Minimum</h4>
+                            <ul class="text-gray-300 space-y-2">
+                                <li>• Windows 10</li>
+                                <li>• 4 GB RAM</li>
+                                <li>• DirectX 11 compatible GPU</li>
+                                <li>• 2 GB of free disk space</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-3 text-purple-400">🚀 Recommended</h4>
+                            <ul class="text-gray-300 space-y-2">
+                                <li>• Windows 11</li>
+                                <li>• 16 GB RAM</li>
+                                <li>• RTX 3060 / RX 6600 or higher</li>
+                                <li>• 10 GB of free disk space</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black py-12 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-r from-purple-900/10 to-pink-900/10"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div class="w-8 h-8 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center glow-effect">
+                            <img loading="lazy" src="images/my-new-logo.png" 
+                                 alt="VRChat Logo" 
+                                 class="w-6 h-6 object-contain"
+                                 onerror="this.src='data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHZpZXdCb3g9IjAgMCAyNCAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48Y2lyY2xlIGN4PSIxMiIgY3k9IjEyIiByPSIxMiIgZmlsbD0iIzY4NzZjNiIvPjx0ZXh0IHg9IjEyIiB5PSIxNCIgZm9udC1mYW1pbHk9IkFyaWFsIiBmb250LXNpemU9IjgiIGZpbGw9IndoaXRlIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBkeT0iLjNlbSI+VlI8L3RleHQ+PC9zdmc+';">
+                        </div>
+                        <span class="text-lg font-bold text-glow">Averenth VRChat Plugin</span>
+                    </div>
+                    <p class="text-gray-400">
+                        Make your VRChat experience limitless.
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-glow">Community of VRChat</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://discord.gg/vrchat" class="hover:text-purple-400 transition-all">Discord Server</a></li>
+                        <li><a href="https://www.reddit.com/r/VRchat/" class="hover:text-purple-400 transition-all">Reddit</a></li>
+                        <li><a href="https://www.youtube.com/VRChat" class="hover:text-purple-400 transition-all">YouTube</a></li>
+                        <li><a href="https://www.twitch.tv/vrchat" class="hover:text-purple-400 transition-all">Twitch</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold mb-4 text-glow">VRChat for use plugin</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://store.steampowered.com/app/438100/VRChat/" class="hover:text-purple-400 transition-all">Download VRChat STEAM</a></li>
+                        <li><a href="https://vrch.at/support" class="hover:text-purple-400 transition-all">VRChat Support</a></li>
+                        <li><a href="https://xr-marketplace.com/en/makeavatar" class="hover:text-purple-400 transition-all">MakeAvatar for VRChat</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
+                <p>&copy; 2025 VRChat Plugin Studio. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // DOWNLOAD FONKSİYONU - YENİ EKLEND
+
+        // TOAST MESAJ FONKSİYONU
+        function showToast(message, type = 'info') {
+            const toast = document.createElement('div');
+            toast.className = `fixed top-4 right-4 z-50 p-4 rounded-lg shadow-lg transform translate-x-full transition-transform duration-300 ${
+                type === 'success' ? 'bg-green-500 text-white' : 
+                type === 'error' ? 'bg-red-500 text-white' : 
+                'bg-blue-500 text-white'
+            }`;
+            toast.textContent = message;
+            
+            document.body.appendChild(toast);
+            
+            // Animasyon
+            setTimeout(() => toast.classList.remove('translate-x-full'), 100);
+            
+            // Kaldır
+            setTimeout(() => {
+                toast.classList.add('translate-x-full');
+                setTimeout(() => toast.remove(), 300);
+            }, 3000);
+        }
+
+        // Loader sadece DOM hazır olunca kapanacak
+        window.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('loader').classList.add('hidden');
+        });// Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('href') === '#') return;
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Enhanced scroll effects
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            const scrolled = window.scrollY;
+            
+            if (scrolled > 100) {
+                nav.style.background = 'rgba(17, 24, 39, 0.95)';
+                nav.style.backdropFilter = 'blur(20px)';
+            } else {
+                nav.style.background = 'rgba(17, 24, 39, 0.8)';
+                nav.style.backdropFilter = 'blur(10px)';
+            }
+        });
+
+        // Parallax effect for hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero-gradient');
+            const speed = scrolled * 0.5;
+            parallax.style.transform = `translateY(${speed}px)`;
+        });
+
+        // Interactive card effects
+        document.querySelectorAll('.card-3d').forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                
+                const rotateX = (y - centerY) / 10;
+                const rotateY = (centerX - x) / 10;
+                
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateZ(20px)`;
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateZ(0)';
+            });
+        });
+
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-btn').addEventListener('click', () => {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('open');
+        });
+
+        // Dynamic typing effect
+        function typeWriter(element, text, speed = 50) {
+            let i = 0;
+            element.innerHTML = '';
+            
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+
+        // Initialize typing animation when visible
+        const typingElement = document.querySelector('.typing-animation');
+        if (typingElement) {
+            const typingObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        typeWriter(entry.target, 'The best plugins to transform your VRChat experience', 80);
+                        typingObserver.unobserve(entry.target);
+                    }
+                });
+            });
+            typingObserver.observe(typingElement);
+        }
+
+        // Button click effects
+        document.querySelectorAll('button, a').forEach(button => {
+            button.addEventListener('click', function(e) {
+                // Create ripple effect
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = x + 'px';
+                ripple.style.top = y + 'px';
+                ripple.classList.add('ripple');
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+            });
+        });
+
+        // Random floating animation delays
+        document.querySelectorAll('.floating, .floating-delayed, .floating-delayed-2').forEach((el, index) => {
+            el.style.animationDelay = `${index * 0.5}s`;
+        });
+
+        // Error Logging
+        window.addEventListener('error', (event) => {
+            console.error('Hata:', event.message, event.filename, event.lineno);
+        });
+
+        // PWA Service Worker (Optional)
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('sw.html')
+                    .then(registration => console.log('SW registered'))
+                    .catch(error => console.log('SW registration failed'));
+            });
+        }
+    </script>
+</body>
+
+
+<!-- Mirrored from vrchateroticrp.com/home/ by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 09 Nov 2025 00:39:45 GMT -->
+</html>
